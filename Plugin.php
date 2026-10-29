@@ -8,6 +8,8 @@ use Kanboard\Model\TaskDuplicationModel;
 use Kanboard\Model\TaskProjectDuplicationModel;
 use Kanboard\Plugin\Coverimage\Model\CoverimageDuplicator;
 use Kanboard\Plugin\Coverimage\Model\CoverimageProjectDuplicator;
+use Kanboard\Plugin\Coverimage\Api\Procedure\CoverimageProcedure;
+use Kanboard\Plugin\Coverimage\Api\Procedure\ProjectCoverimageProcedure;
 use Kanboard\Core\Security\Role;
 
 class Plugin extends Base
@@ -40,6 +42,12 @@ class Plugin extends Base
         $this->container['taskProjectDuplicationModel'] = $this->container->factory(function ($c) {
             return new CoverimageProjectDuplicator($c);
         });
+
+        //API
+        $this->api->getProcedureHandler()->withClassAndMethod('setCoverimage', new CoverimageProcedure($this->container), 'setCoverimage');
+        $this->api->getProcedureHandler()->withClassAndMethod('removeCoverimage', new CoverimageProcedure($this->container), 'removeCoverimage');
+        $this->api->getProcedureHandler()->withClassAndMethod('setProjectCoverimage', new ProjectCoverimageProcedure($this->container), 'setCoverimage');
+        $this->api->getProcedureHandler()->withClassAndMethod('removeProjectCoverimage', new ProjectCoverimageProcedure($this->container), 'removeCoverimage');
 
     }
 
