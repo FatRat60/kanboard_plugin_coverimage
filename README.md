@@ -16,6 +16,128 @@ This software is in maintenance mode. It doesn't mean it's abandoned, but there 
 
 ![image](https://user-images.githubusercontent.com/26339368/46497724-5dcfb180-c7e9-11e8-82ea-173d633f602d.png)
 
+## API
+
+### setCoverimage
+
+- Purpose: **Set a task's Coverimage**
+- Parameters:
+
+    - **task_id** (integer, required)
+    - **file_id** (integer, required)
+
+- Result on success: **true**
+- Result on failure: **false**
+
+Request example:
+
+    {
+        "jsonrpc": "2.0",
+        "method": "setCoverimage",
+        "id": 68492039,
+        "params": {
+            "task_id": 3,
+            "file_id": 1
+        }
+    }
+
+Response example:
+
+    {
+        "jsonrpc": "2.0",
+        "id": 68492039,
+        "result": true
+    }
+
+### removeCoverimage
+
+- Purpose: **Remove a task's Coverimage**
+- Parameters:
+
+    - **task_id** (integer, required)
+
+- Result on success: **file_id** or **null** if no Coverimage to remove
+- Result on failure: **false**
+
+Request example:
+
+    {
+        "jsonrpc": "2.0",
+        "method": "removeCoverimage",
+        "id": 18043856,
+        "params": {
+            "task_id": 3
+        }
+    }
+
+Response example:
+
+    {
+        "jsonrpc": "2.0",
+        "id": 18043856,
+        "result": 1
+    }
+
+### setProjectCoverimage
+
+- Purpose: **Set a project's Coverimage**
+- Parameters:
+
+    - **project_id** (integer, required)
+    - **file_id** (integer, required)
+
+- Result on success: **true**
+- Result on failure: **false**
+
+Request example:
+
+    {
+        "jsonrpc": "2.0",
+        "method": "setProjectCoverimage",
+        "id": 473819385,
+        "params": {
+            "project_id": 1,
+            "file_id": 5
+        }
+    }
+
+Response example:
+
+    {
+        "jsonrpc": "2.0",
+        "id": 473819385,
+        "result": true
+    }
+
+### removeProjectCoverimage
+
+- Purpose: **Remove a project's Coverimage**
+- Parameters:
+
+    - **project_id** (integer, required)
+
+- Result on success: **file_id** or **null** if no Coverimage to remove
+- Result on failure: **false**
+
+Request example:
+
+    {
+        "jsonrpc": "2.0",
+        "method": "removeProjectCoverimage",
+        "id": 382937566,
+        "params": {
+            "project_id": 1
+        }
+    }
+
+Response example:
+
+    {
+        "jsonrpc": "2.0",
+        "id": 382937566,
+        "result": 5
+    }
+
 Plugin for <https://github.com/kanboard/kanboard>
 
 ## Author
