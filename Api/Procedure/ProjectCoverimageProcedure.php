@@ -25,7 +25,8 @@ class ProjectCoverimageProcedure extends BaseProcedure
     {
         ProjectAuthorization::getInstance($this->container)->check('ProjectCoverimageProcedure', 'removeProjectCoverimage', $project_id);
 
+        $file_id = $this->projectcoverimageModel->getCoverimage($project_id);
         $this->projectcoverimageModel->removeCoverimage($project_id);
-        return $this->projectcoverimageModel->getCoverimage($project_id) == null ? true : false;
+        return $this->projectcoverimageModel->getCoverimage($project_id) == null ? $file_id : false;
     }
 }

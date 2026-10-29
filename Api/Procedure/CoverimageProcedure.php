@@ -25,7 +25,8 @@ class CoverimageProcedure extends BaseProcedure
     {
         TaskAuthorization::getInstance($this->container)->check('CoverimageProcedure', 'removeCoverimage', $task_id);
 
+        $file_id = $this->coverimageModel->getCoverimage($task_id);
         $this->coverimageModel->removeCoverimage($task_id);
-        return $this->coverimageModel->getCoverimage($task_id) == null ? true : false;
+        return $this->coverimageModel->getCoverimage($task_id) == null ? $file_id : false;
     }
 }
